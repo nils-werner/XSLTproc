@@ -1,0 +1,25 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	display: none;
+}
+
+pre {
+	background-color: #EEEEEE;
+	padding: 3px;
+	boder: 2px solid #DADADA;
+	font-size: 9pt;
+	letter-spacing: -1px;
+}
+
+pre.code {
+	font-size: 10pt;
+	letter-spacing: 0px;
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>name</key>
+        <string>Evaluate Xpath</string>
+        <key>uuid</key>
+        <string>B984C580-49E6-4A38-8B38-4AE92F882870</string>
+        <key>input</key>
+        <string>selection</string>
+        <key>output</key>
+        <string>showAsHTML</string>
+        <key>command</key>
+        <string>. "${TM_SUPPORT_PATH}/lib/html.sh"
+. "${TM_SUPPORT_PATH}/lib/webpreview.sh"
+. "${TM_BUNDLE_SUPPORT}/lib/misc.sh"
+
+importCSS "${TM_BUNDLE_SUPPORT}/css/style.css"
+
+# Load Data and Params
+if [ "$TM_SCOPE" = "text.xml.xsl" ]; then
+	dataxml=$(xml_file)
+fi
+paramfile=$(param_file)
+paramlist=$(param_load $paramfile)
+IFS="	"
+paramarray=($paramlist)	
+text=$(selected_text)
+escapedtext=${text//\&amp;/\\\&amp;} # escape ampersands
+
+echo ""
+
+# Display Headline
+echo "&lt;h1&gt;XSLTproc&lt;/h1&gt;"
+echo -n "XPath evaluated on "
+date
+echo "&lt;br /&gt;"
+if [ "$TM_SCOPE" = "text.xml.xsl" ]; then
+	echo "Stylesheet/XML Data/Params: $(basename $TM_FILEPATH) / $dataxml / $paramfile" | sed -f ${TM_BUNDLE_SUPPORT}/lib/entities
+elif [ "$TM_SCOPE" = "text.xml" ]; then
+	echo "XML Data/Params: $(basename $TM_FILEPATH) / $paramfile" | sed -f ${TM_BUNDLE_SUPPORT}/lib/entities
+fi
+echo "&lt;br /&gt;"
+if which recode &amp;&gt;/dev/null; then  # recode not available on Mac by default
+	echo "Xpath: ${text}" | recode UTF-8..html
+else
+	echo "Xpath: ${text}" | sed -f ${TM_BUNDLE_SUPPORT}/lib/entities
+fi
+	
+# Display Result
+echo "&lt;h2&gt;Result&lt;/h2&gt;"
+echo "&lt;pre class=\"code\"&gt;"
+if [ "$TM_SCOPE" = "text.xml.xsl" ]; then # Process XSLT-File
+	if which recode &amp;&gt;/dev/null; then # recode not available on Mac by default
+		cat ${TM_BUNDLE_SUPPORT}/xml/xpath-skel.xsl | sed "s#placeholder#${escapedtext}#"  | xsltproc ${paramarray[*]} - $TM_DIRECTORY/$dataxml | recode UTF-8..html
+	else
+		cat ${TM_BUNDLE_SUPPORT}/xml/xpath-skel.xsl | sed "s#placeholder#${escapedtext}#"  | xsltproc ${paramarray[*]} - $TM_DIRECTORY/$dataxml | sed -f ${TM_BUNDLE_SUPPORT}/lib/entities
+	fi
+elif [ "$TM_SCOPE" = "text.xml" ]; then # Process XML-File (Stylesheet provided in file)
+	if which recode &amp;&gt;/dev/null; then # recode not available on Mac by default
+		cat ${TM_BUNDLE_SUPPORT}/xml/xpath-skel.xsl | sed "s#placeholder#${escapedtext}#"  | xsltproc ${paramarray[*]} - $TM_FILEPATH | recode UTF-8..html
+	else
+		cat ${TM_BUNDLE_SUPPORT}/xml/xpath-skel.xsl | sed "s#placeholder#${escapedtext}#"  | xsltproc ${paramarray[*]} - $TM_FILEPATH | sed -f ${TM_BUNDLE_SUPPORT}/lib/entities
+	fi
+fi
+echo "&lt;/pre&gt;"
+
+# Display Version
+echo "&lt;h2&gt;Version&lt;/h2&gt;"
+echo "&lt;pre&gt;"
+xsltproc --version
+echo "&lt;/pre&gt;"</string>
+        <key>scope</key>
+        <string>source.xml.xsl, text.xml.xsl, source.xml, text.xml</string>
+        <key>fallbackInput</key>
+        <string>none</string>
+        <key>keyEquivalent</key>
+        <string>^$q</string>
+    </dict>
+</plist>

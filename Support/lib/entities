@@ -1,0 +1,12 @@
+# Wandelt Sonderzeichen zu HTML-Entities
+s/&/\&amp\;/g;
+s/ä/\&auml\;/g;
+s/ö/\&ouml\;/g;
+s/ü/\&uuml\;/g;
+s/ß/\&szlig\;/g;
+s/Ä/\&Auml\;/g;
+s/Ö/\&Ouml\;/g;
+s/Ü/\&Üuml\;/g;
+s/"/\&quot\;/g;
+s/</\&lt\;/g;
+s/>/\&gt\;/g;

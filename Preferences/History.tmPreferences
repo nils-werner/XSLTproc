@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>name</key>
+        <string>History</string>
+        <key>uuid</key>
+        <string>B91718F9-5EA6-44FB-AD65-9D301D7C5415</string>
+        <key>settings</key>
+        <dict>
+            <key>shellVariables</key>
+            <array>
+                <dict>
+                    <key>name</key>
+                    <string>TM_CONTEXT</string>
+                    <key>value</key>
+                    <string>/</string>
+                </dict>
+                <dict>
+                    <key>name</key>
+                    <string>TM_XPATH</string>
+                    <key>value</key>
+                    <string>.</string>
+                </dict>
+            </array>
+        </dict>
+        <key>scope</key>
+        <string>source.xsl, text.xsl, source.xml, text.xml</string>
+    </dict>
+</plist>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>name</key>
+        <string>XSLTproc</string>
+        <key>uuid</key>
+        <string>2B5D7E50-E6D5-4FFF-9702-F8A8CE93864B</string>
+        <key>mainMenu</key>
+        <dict>
+            <key>items</key>
+            <array>
+                <string>B984C580-49E6-4A38-8B38-4AE92F882870</string>
+                <string>82F2C44D-1D5F-4D9F-9E87-AA716675B0DA</string>
+            </array>
+        </dict>
+    </dict>
+</plist>
