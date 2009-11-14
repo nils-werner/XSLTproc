@@ -7,15 +7,15 @@
 	indent="yes" />
 
 <xsl:template match="/">
-	<xsl:apply-templates select="placeholder" />
+	<xsl:apply-templates select="placeholder" mode="recur" />
 </xsl:template>
 
 
-<xsl:template match="*">
+<xsl:template match="*" mode="recur">
 	<xsl:copy-of select="." />
 </xsl:template>
 
-<xsl:template match="@*">
+<xsl:template match="@*" mode="recur">
 	<xsl:value-of select="." />
 </xsl:template>
 

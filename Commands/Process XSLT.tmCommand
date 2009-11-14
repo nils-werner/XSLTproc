@@ -18,7 +18,7 @@
 importCSS "${TM_BUNDLE_SUPPORT}/css/style.css"
 
 # Load Data and Params
-if [ "$TM_SCOPE" = "text.xml.xsl" ]; then
+if [[ $TM_SCOPE = *text.xml.xsl* ]]; then
 	dataxml=$(xml_file)
 fi
 paramfile=$(param_file)
@@ -28,29 +28,29 @@ paramarray=($paramlist)
 
 # Display Headline
 echo "&lt;h1&gt;XSLTproc&lt;/h1&gt;"
-if [ "$TM_SCOPE" = "text.xml.xsl" ]; then
+if [[ $TM_SCOPE = *text.xml.xsl* ]]; then
 	echo -n "XSLT processed on "
-elif [ "$TM_SCOPE" = "text.xml" ]; then
+elif [[ $TM_SCOPE = *text.xml* ]]; then
 	echo -n "XML processed on "
 fi
 date
 echo "&lt;br /&gt;"
-if [ "$TM_SCOPE" = "text.xml.xsl" ]; then
+if [[ $TM_SCOPE = *text.xml.xsl* ]]; then
 	echo "Stylesheet/XML Data/Params: $(basename $TM_FILEPATH) / $dataxml / $paramfile" | sed -f ${TM_BUNDLE_SUPPORT}/lib/entities
-elif [ "$TM_SCOPE" = "text.xml" ]; then
+elif [[ $TM_SCOPE = *text.xml* ]]; then
 	echo "XML Data/Params: $(basename $TM_FILEPATH) / $paramfile" | sed -f ${TM_BUNDLE_SUPPORT}/lib/entities
 fi
 
 #Display Result
 echo "&lt;h2&gt;Result&lt;/h2&gt;"
 echo "&lt;pre class=\"code sh_html\"&gt;"
-if [ "$TM_SCOPE" = "text.xml.xsl" ]; then # Process XSLT-File
+if [[ $TM_SCOPE = *text.xml.xsl* ]]; then # Process XSLT-File
 	if which recode &amp;&gt;/dev/null; then # recode not available on Mac by default
 		xsltproc ${paramarray[*]} $TM_FILEPATH $TM_DIRECTORY/$dataxml | recode UTF-8..html
 	else
 		xsltproc ${paramarray[*]} $TM_FILEPATH $TM_DIRECTORY/$dataxml | sed -f ${TM_BUNDLE_SUPPORT}/lib/entities
 	fi
-elif [ "$TM_SCOPE" = "text.xml" ]; then # Process XML-File (Stylesheet provided in file)
+elif [[ $TM_SCOPE = *text.xml* ]]; then # Process XML-File (Stylesheet provided in file)
 	if which recode &amp;&gt;/dev/null; then # recode not available on Mac by default
 		xsltproc ${paramarray[*]} $TM_FILEPATH | recode UTF-8..html
 	else
@@ -62,9 +62,9 @@ echo "&lt;/pre&gt;"
 # Display Profiler
 echo "&lt;h2&gt;Profiler&lt;/h2&gt;"
 echo "&lt;pre&gt;"
-if [ "$TM_SCOPE" = "text.xml.xsl" ]; then # Process XSLT-File
+if [[ $TM_SCOPE = *text.xml.xsl* ]]; then # Process XSLT-File
 	xsltproc --noout --profile ${paramarray[*]} $TM_FILEPATH $TM_DIRECTORY/$dataxml
-elif [ "$TM_SCOPE" = "text.xml" ]; then # Process XML-File (Stylesheet provided in file)
+elif [[ $TM_SCOPE = *text.xml* ]]; then # Process XML-File (Stylesheet provided in file)
 	xsltproc --noout --profile ${paramarray[*]} $TM_FILEPATH
 fi
 echo "&lt;/pre&gt;"
