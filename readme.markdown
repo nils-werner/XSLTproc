@@ -29,6 +29,8 @@ any .xsl stylesheet or .xml document with a stylesheet declarations.
 When running from a XSL file, it will load your XML either from `./<stylesheet>.xml` or, if not found, `./data.xml`. This file has to be existent.
 	
 Similarily it will load your params either from `./<stylesheet>.txt` or, if not found, `./params.txt`. This file is optional.
+	
+When running from a XML file, the Stylesheet-declaration has to be existent: `<?xml-stylesheet type="text/xsl" href="something.xsl"?>`
 
 Params are expected to be in the form of tab-separated name and value pairs:
 
