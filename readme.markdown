@@ -45,7 +45,7 @@ On Windows, the Shortcuts to XSLTproc Actions are Ctrl+Alt+Q for "Process XSLT" 
 "Evaluate XPath" will either evaluate the currently selected expression or ask for one if there wasn't anything selected.
 
 Bugs
-==== 
+====
 There will be many! This is a pre-alpha version of the bundle. Use with care and report all problems to nils.werner@gmail.com
 
 Planned Features
@@ -55,4 +55,4 @@ Planned Features
 
 Symphony CMS
 ============
-To all of you using Symphony CMS: You'll have to copy the XML and Params from the ?debug tool into /workspace/pages/data.xml and params.txt, respectively.
+To all of you using Symphony CMS: You'll have to copy the XML and Params from the `?debug` tool into `/workspace/pages/data.xml` and `params.txt`, respectively.
