@@ -32,6 +32,8 @@ if [[ $TM_SCOPE = *text.xml.xsl* ]]; then
 	echo -n "XSLT processed on "
 elif [[ $TM_SCOPE = *text.xml* ]]; then
 	echo -n "XML processed on "
+else
+	echo "Scope Problems. Aborting"
 fi
 date
 echo "&lt;br /&gt;"
@@ -67,12 +69,6 @@ if [[ $TM_SCOPE = *text.xml.xsl* ]]; then # Process XSLT-File
 elif [[ $TM_SCOPE = *text.xml* ]]; then # Process XML-File (Stylesheet provided in file)
 	xsltproc --noout --profile ${paramarray[*]} $TM_FILEPATH
 fi
-echo "&lt;/pre&gt;"
-
-#Display Version
-echo "&lt;h2&gt;Version&lt;/h2&gt;"
-echo "&lt;pre&gt;"
-xsltproc --version
 echo "&lt;/pre&gt;"</string>
         <key>scope</key>
         <string>source.xml.xsl, text.xml.xsl, source.xml, text.xml</string>

@@ -63,12 +63,6 @@ elif [[ $TM_SCOPE = *text.xml* ]]; then # Process XML-File (Stylesheet provided 
 		cat ${TM_BUNDLE_SUPPORT}/xml/xpath-skel.xsl | sed "s#placeholder#${escapedtext}#"  | xsltproc ${paramarray[*]} - $TM_FILEPATH | sed -f ${TM_BUNDLE_SUPPORT}/lib/entities
 	fi
 fi
-echo "&lt;/pre&gt;"
-
-# Display Version
-echo "&lt;h2&gt;Version&lt;/h2&gt;"
-echo "&lt;pre&gt;"
-xsltproc --version
 echo "&lt;/pre&gt;"</string>
         <key>scope</key>
         <string>source.xml.xsl, text.xml.xsl, source.xml, text.xml</string>
