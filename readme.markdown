@@ -4,7 +4,7 @@ Requirements
 - Windows: e Texteditor and cygwin with the libxslt package installed
 
 Mac OSX:
-xsltproc should come preinstalled with your system. For better Unicode-support you may install recode from Darwinports: http://recode.darwinports.com/
+xsltproc should come preinstalled with your system. For better Unicode-support you may install recode from MacPorts: http://www.macports.org/
 
 Windows:
 You need cygwin and its package "LibXSLT".
